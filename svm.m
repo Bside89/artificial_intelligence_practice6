@@ -1,3 +1,7 @@
+function [ accuracy ] = svm( input_args )
+%SVM Summary of this function goes here
+%   Detailed explanation goes here
+
 % Universidade Federal de Mato Grosso
 % Instituto de Engenharia
 % Inteligência Artificial - 2016/2
@@ -36,18 +40,15 @@ testLabel = labels(testIndex == 1, :);
 
 % ALTERE O VALOR DE C
 % Obtenha o melhor valor de C tal que melhore a acurácia
-n = 0:5:30;
-C = 10.^n;
-accuracy = zeros(size(n, 2), 3);
+C = '1e+30';
 
-for i=1:(size(n, 2)),
-    
-    model = svmtrain(trainLabel, trainData, strcat(['-c ', num2str(C(i)), ...
-                                                    ' -t 2 -g 0.07 -b 1']));
-    % Run the SVM model on the test data
-    [predict_label, acc, prob_values] = svmpredict(testLabel, testData, model, '-b 1');
-    accuracy(i, :) = acc';
-    
-end
+
+model = svmtrain(trainLabel, trainData, strcat(['-c ', C,  ' -t 2 -g 0.07 -b 1']));
+
+% Run the SVM model on the test data
+[predict_label, accuracy, prob_values] = svmpredict(testLabel, testData, model, '-b 1');
 
 accuracy
+
+end
+
