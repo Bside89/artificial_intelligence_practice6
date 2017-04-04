@@ -7,7 +7,6 @@
 % Você deve encontrar o melhor valor de C.
 %
 
-
 clear
 close all
 clc
@@ -16,10 +15,8 @@ addpath('./libsvm-3.22/matlab');
 
 [labels, features] = libsvmread('parkData.txt');
 
-
 M = size(features, 1);
 N = floor(2*M/3);
-
 
 % Random permutation
 trainIndex = zeros(N, 1);
