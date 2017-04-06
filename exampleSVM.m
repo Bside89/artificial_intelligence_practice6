@@ -33,7 +33,7 @@ testLabel = labels(testIndex == 1, :);
 
 % ALTERE O VALOR DE C
 % Obtenha o melhor valor de C tal que melhore a acurácia
-n = 0:5:30;
+n = 0;
 C = 10.^n;
 accuracy = zeros(size(n, 2), 3);
 
